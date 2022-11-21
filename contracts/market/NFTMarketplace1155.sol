@@ -12,7 +12,7 @@ import "./interface/INFTMarketplace1155.sol";
 import "./Abstract/ANFTMarketplace1155.sol";
 import "./library/AmountTransfer.sol";
 
-  /**
+  /***
         @notice NFTMarketplace is INFTMarketplace1155, ANFTMarketplace1155  .
         @param owner  The address of the contract owner
         @makerFee - platform fee of the market at initial deployement
@@ -20,14 +20,14 @@ import "./library/AmountTransfer.sol";
 
 contract NFTMarketplace1155 is INFTMarketplace1155, ANFTMarketplace1155 {
     using SafeMath for uint256;
-    /**
+    /***
         initial constructor takes owner and platform fee as input
     **/
     constructor(address _owner, uint256 _makerFee) {
         owner = _owner;
         makerFee = _makerFee;
     }
-     /**
+     /***
         @notice Get the marketFee.
         @param tokenId  The Owner only can set makerfee
         @return         Requested amount makerfee
@@ -37,7 +37,7 @@ contract NFTMarketplace1155 is INFTMarketplace1155, ANFTMarketplace1155 {
         makerFee = _makerFee;
     }
 
-     /**
+     /***
         @notice Owner can change the contract ownership.
         @param tokenId  The Owner only can make changes 
         @return         Update ownership of the contrct 
@@ -50,7 +50,7 @@ contract NFTMarketplace1155 is INFTMarketplace1155, ANFTMarketplace1155 {
 
     // NFT FIXED SALE
 
-      /**
+      /***
         @notice Function to nftFixedSale
         @param nftFixedSale this function to create nft fixedsale by putting nft details
      */
@@ -81,7 +81,7 @@ contract NFTMarketplace1155 is INFTMarketplace1155, ANFTMarketplace1155 {
             data
         );
     }
-     /**
+     /***
         @notice Function to cancelFixedsale
         @param cancelFixedsale once nft is in fixed sale using this function to cancel sell
      */
@@ -127,7 +127,7 @@ contract NFTMarketplace1155 is INFTMarketplace1155, ANFTMarketplace1155 {
 
         emit CancelNftFixedSale(_nftContractAddress, msg.sender, _tokenId);
     }
-      /**
+      /***
         @notice Function to updateFixedSalePrice
         @param updateFixedSalePrice this function to updatesale price of nft 
      */
@@ -159,7 +159,7 @@ contract NFTMarketplace1155 is INFTMarketplace1155, ANFTMarketplace1155 {
         );
     }
 
-       /**
+       /***
         @notice Function to buyFromFixedSale
         @param buyFromFixedSale once nft is in fixed sale using this function to buy form market
      */
@@ -208,7 +208,7 @@ contract NFTMarketplace1155 is INFTMarketplace1155, ANFTMarketplace1155 {
 
     // NFT AUCTION SALE
 
-    /**
+    /***
         @notice Function to createNftAuctionSale
         @param createNftAuctionSale this function to create Auction sale  
      */
@@ -334,7 +334,7 @@ contract NFTMarketplace1155 is INFTMarketplace1155, ANFTMarketplace1155 {
             msg.sender
         );
     }
-    /**
+    /***
         @notice Function to _cancelAuctionSale
         @param _cancelAuctionSale this function to cancel auction sale during auction  
      */
@@ -364,7 +364,7 @@ contract NFTMarketplace1155 is INFTMarketplace1155, ANFTMarketplace1155 {
 
         emit CancelNftAuctionSale(_nftContractAddress, _tokenId, msg.sender);
     }
-    /**
+    /***
         @notice Function to settleAuction
         @param _cancelAuctionSale this function to settle auction sale after end of auction  
      */
@@ -397,7 +397,7 @@ contract NFTMarketplace1155 is INFTMarketplace1155, ANFTMarketplace1155 {
             nftContractAuctionSale[_nftContractAddress][_tokenId].nftSeller
         );
     }
-      /**
+      /***
         @notice Function to withdrawBid
         @param updateTheBidPrice this function to withdrawBid 
      */

@@ -5,12 +5,12 @@ import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 /**
 
  * @title Batch_create for Multiple nft
- * @dev Note its MulfipleNFT ERC1155 contract for batch selling  
+ * @dev Note its MultiipleNFT ERC1155 contract for batch selling  
  * 
  * 
  */
 
-contract MultipleNFT is ERC1155 {
+contract BatchCreate1155 is ERC1155 {
     address owner;
     // mapping type of nft 
     mapping(uint256 => uint256) nftType;

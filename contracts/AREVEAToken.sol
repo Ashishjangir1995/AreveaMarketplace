@@ -3,7 +3,7 @@
 pragma solidity ^0.8.4;
 
 
-import "./ERC20.sol";
+import "./External/ERC20.sol";
 import "./External/SafeMath.sol";
 import "./External/Ownable.sol";
 

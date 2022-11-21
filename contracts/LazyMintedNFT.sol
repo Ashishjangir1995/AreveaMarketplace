@@ -9,7 +9,7 @@ import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract LazyNFT is ERC721URIStorage, EIP712 {
+contract LazyMintedNFT is ERC721URIStorage, EIP712 {
     string private constant names = "LazyNFTMinting-signature";
     string private constant version = "1";
     uint256 public chainId = 80001;

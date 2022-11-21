@@ -18,5 +18,9 @@
   "bugs": {
     "url": "https://github.com/ASunanda/Arevea/issues"
   },
-  "homepage": "https://github.com/ASunanda/Arevea#readme"
+  "homepage": "https://github.com/ASunanda/Arevea#readme",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.7.0",
+    "hardhat": "^2.12.2"
+  }
 }

@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "../interface/INFTMarketplace.sol";
 import "../library/AmountTransfer.sol";
-    /**
+    /***
         @notice abstract contract ANFTMarketplace  .
         @param owner  The address of the token holder
         @return        The account's balance of the Token type requested

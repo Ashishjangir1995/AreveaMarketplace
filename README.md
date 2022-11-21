@@ -7,35 +7,23 @@
 
 
 # Arevea-NFT-Market Place 
-The Arevea marketplace mainly focuses upon the utilization of the Etherium network namely ERC721 for single NFT and ERC1155 for multiple NFT. This is also compatibleble with EVM aka ethereum virtual machine and innumerable other smart chain networks such as 1. Rinkeby Network 2. Ropsten amonst others. The main purpose of this project is to provide a Blockchain based online market place for the sale and purchase of NFT's both Single and Multiple using AREVEA tokens(ERC20,Criptocurrency). Arevea tokens may also be utilized for other transactions Thus we may conclude that there is a large scope of growth present permitting us to move forward with this initiation.  
+The Arevea marketplace mainly EIP standards of Etherium network namely ERC721 for single NFT and ERC1155 for multiple NFT. This is also compatible with EVM aka ethereum virtual machine and innumerable other smart chain networks such as 1. Goerli Network 2. Matic and many others. The main purpose of this project is to provide a Blockchain based online marketplace for the Trading of NFT's both Single and Multiple using AREVEA tokens(ERC20,Cryptocurrency). Arevea tokens may also be utilized for other transactions such as promotions tickets and drops.  
 
-### Brief summary decentralized marketplace 
-NFT or Non-Fungible Tokens are cryptographic assets that are created on blockchain technology, and have unique identification codes and meta-data, which makes them distinguishable, distinct, and completely unique. 
+### Brief summary Decentralized Marketplace 
+NFT or Non-Fungible Tokens are cryptographic assets that are created on blockchain technology, and have unique identification codes with their meta-data, which makes them distinct and completely unique. 
 NFTs can be traded with other NFTs or sold/bought via the NFT marketplace, which is a decentralized platform.
 This marketplace is like an eCommerce platform, say Amazon or eBay where different products are listed by sellers, and buyers can buy them.
 
-### Arevea Token and NFT Contract .sol files details
-Structure- 
-All contracts and tests are in the NFT-Contracts folder. There are multiple implementations and you can select in between 
-
-NFT.sol: This is the base ERC-721 token implementation (with support for ERC-165).
-
-MultipleNFT.sol :This is the base ERC1155 token implementation for multiple copies and multiple at same time with reduced gas fees. 
-
-contracts\market\NFTMARKETPLACE.sol is the marketplace for Single NFT for buy sell and auction in marketplace 
-
-contracts\market\NFTMARKEPLCEERC11552.sol for Multiple nft buy sell and auction in multinft marketplace
-
-Lazy_MInt_ERC20.sol allows the user to create NFT without gas fee, transaction to pass the burden from creator to purchaser (gas fees).
+### Key Features
+Single NFT - (ERC721) where single NFT is traded among users on the platform
+Multiple NFT - (ERC1155) NFT with multiple copies
+LazyMint NFT - (EIP712) single NFT where Creator of NFT need not pay gas fee (0 Gas Fee)
+BatchNFT- (ERC1155) creating a album with multiple copies 
 
 ### Smart Contract Functionality in brief
-From the Above Smart contract one is for Single NFT and another is for Multiple NFT ,using  single NFT we can create Single in Blockchain and that can be buy  sell and trade in NFT market place, for creating single nft in one id is excess amount of gas use so that using one id we can have multiple nfts at one plase , multiple has 2 features one is creating multiple copies and another is creating different items under one id as multiple is called as multiple batch of different nft  at one place. 
+From the Above Smart contract one is for Single NFT and another is for Multiple NFT ,using  single NFT we can create Single in Blockchain and that can be buy  sell and trade in NFT market place, for creating single nft in one id is excess amount of gas use so that using one id we can have multiple nfts at one place , multiple has 2 features one is creating multiple copies and another is creating different items under one id as multiple is called as multiple batch of different nft  at one place. 
 
-Both Single and Multiple has Separate Marketplace to buy sell and trade nft in marketplace. 
-
-Lazy minting is different where the NFT is once minted all creatrion and transaction cost of Blockchain is burn by the buyer itself. 
-
-| 1) Srial no  | contract           | function                               | parameter                                                                                                                      |
+| 1) Srial no  | contract           | function                               | parameter                                                           |
 |--------------|--------------------|----------------------------------------|--------------------------------------------------------------------------------------------------------------------------------|
 | 1            | Single_nft 721     | approve                                | 1st - Contract adress , 2nd tokenid                                                                                            |
 |              |                    | Burn                                   | tokenid                                                                                                                        |
