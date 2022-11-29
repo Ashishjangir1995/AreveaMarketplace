@@ -6,50 +6,48 @@ import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "./interface/INFTMarketplace.sol";
-import "./Abstract/ANFTMarketplace.sol";
-import "./library/AmountTransfer.sol";
-    /***
-        @notice NFTMarketplace is INFTMarketplace, ANFTMarketplace  .
-        @param owner  The address of the contract owner
-        @makerFee - platform fee of the market at initial deployement
-     */
+import "./INFTMarketplace.sol";
+import "./ANFTMarketplace.sol";
+import "./AmountTransfer.sol";
+
 contract NFTMarketplace is INFTMarketplace, ANFTMarketplace {
     using SafeMath for uint256;
-    /**
-        initial constructor takes owner and platform fee as input
-     **/
+
     constructor(address _owner, uint256 _makerFee) {
         owner = _owner;
         makerFee = _makerFee;
     }
 
-    /***
-        @notice Get the marketFee.
-        @param tokenId  The Owner only can set makerfee
-        @return         Requested amount makerfee
-     */
+    // owner Function
 
     function setMakerFee(uint256 _makerFee) external onlyOwner {
         makerFee = _makerFee;
     }
-     /***
-        @notice Owner can change the contract ownership.
-        @param tokenId  The Owner only can make changes 
-        @return         Update ownership of the contrct 
-     */
 
     function setOwner(address _owner) external onlyOwner {
         owner = _owner;
         emit UpdateOwner(msg.sender, _owner);
     }
-
+  //Function to buyAreveaToken from Arevea token owner a required amount	        
+        
+    function buyAreveaToken(address _erc20_contract, address _buyer, uint256 _amount) public returns (bool){	            
+    address  ERC20_contract= _erc20_contract;	        
+        require(_amount>0, "zero Amount is not accepted");
+      IERC20(ERC20_contract).transferFrom(owner,_buyer, _amount);	        
+        emit AreveaTokenBuy(_buyer, owner, _amount);
+    return(true);	        
+   }	        
+        
+   //Function to SellAreveaToken	        
+        
+    function Sell_AreveaToken(address _erc20_contract, address seller, uint256 _amount) public returns (bool){	          
+      address  ERC20_contract= _erc20_contract;	        
+        require(_amount>0, "zero Amount is not accepted");
+      IERC20(ERC20_contract).transferFrom(seller, owner, _amount);	        
+        emit AreveaTokenSell(seller, owner, _amount);
+      return(true);	        
+  }
     // NFT FIXED SALE
-
-       /***
-        @notice Function to buyFromFixedSale
-        @param buyFromFixedSale once nft is in fixed sale using this function to buy form market
-     */
 
     function buyFromFixedSale(
         address _nftContractAddress,
@@ -91,11 +89,6 @@ contract NFTMarketplace is INFTMarketplace, ANFTMarketplace {
         );
     }
 
-     /*
-        @notice Function to cancelFixedsale
-        @param cancelFixedsale once nft is in fixed sale using this function to cancel sell
-     */
-
     function cancelFixedsale(address _nftContractAddress, uint256 _tokenId)
         external
         isNftInFixedSale(_nftContractAddress, _tokenId)
@@ -113,10 +106,6 @@ contract NFTMarketplace is INFTMarketplace, ANFTMarketplace {
 
         emit CancelNftFixedSale(_nftContractAddress, msg.sender, _tokenId);
     }
-    /*
-        @notice Function to nftFixedSale
-        @param nftFixedSale this function to create nft fixedsale by putting nft details
-     */
 
     function nftFixedSale(
         address _nftContractAddress,
@@ -161,10 +150,7 @@ contract NFTMarketplace is INFTMarketplace, ANFTMarketplace {
             block.timestamp
         );
     }
-    /*
-        @notice Function to updateFixedSalePrice
-        @param updateFixedSalePrice this function to updatesale price of nft 
-     */
+
     function updateFixedSalePrice(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -186,10 +172,7 @@ contract NFTMarketplace is INFTMarketplace, ANFTMarketplace {
     }
 
     // NFT AUCTION SALE
-    /*
-        @notice Function to createNftAuctionSale
-        @param createNftAuctionSale this function to create Auction sale  
-     */
+
     function createNftAuctionSale(
         address _nftContractAddress,
         address _erc20,
@@ -217,11 +200,7 @@ contract NFTMarketplace is INFTMarketplace, ANFTMarketplace {
             _minPrice
         );
     }
-     /*
-        @notice Function to _cancelAuctionSale
-        @param _cancelAuctionSale this function to cancel auction sale during auction  
-     */
- 
+
     function _cancelAuctionSale(address _nftContractAddress, uint256 _tokenId)
         external
         isNftInAuctionSale(_nftContractAddress, _tokenId)
@@ -243,11 +222,6 @@ contract NFTMarketplace is INFTMarketplace, ANFTMarketplace {
 
         emit CancelNftAuctionSale(_nftContractAddress, _tokenId, msg.sender);
     }
-
-     /*
-        @notice Function to makeBid
-        @param makeBid this function to make bid during auction 
-     */
 
     function makeBid(
         address _nftContractAddress,
@@ -317,10 +291,7 @@ contract NFTMarketplace is INFTMarketplace, ANFTMarketplace {
             nftContractAuctionSale[_nftContractAddress][_tokenId].nftSeller
         );
     }
-     /*
-        @notice Function to updateTheBidPrice
-        @param updateTheBidPrice this function to updateTheBidPrice during auction 
-     */
+
     function updateTheBidPrice(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -370,11 +341,7 @@ contract NFTMarketplace is INFTMarketplace, ANFTMarketplace {
             finalBidPrice,
             msg.sender
         );
-    } 
-     /*
-        @notice Function to withdrawBid
-        @param updateTheBidPrice this function to withdrawBid 
-     */
+    }
 
     function withdrawBid(address _nftContractAddress, uint256 _tokenId)
         external
@@ -408,18 +375,11 @@ contract NFTMarketplace is INFTMarketplace, ANFTMarketplace {
     }
 
     //view function
-    /*
-        @notice its a view function to getAuctionSaleNFT
-        @param updateTheBidPrice this function to view nft details 
-     */
 
     function getAuctionSaleNFT() external view returns (SaleInfo[] memory) {
         return auctionSaleNFT;
     }
-      /*
-        @notice its a view function to getFixedSale
-        @param getFixedSale this function to view nft fixedsale details 
-     */
+
     function getFixedSale(address _nftContractAddress, uint256 _tokenId)
         external
         view
@@ -427,17 +387,11 @@ contract NFTMarketplace is INFTMarketplace, ANFTMarketplace {
     {
         return nftContractFixedSale[_nftContractAddress][_tokenId];
     }
-     /*
-        @notice its a view function to getFixedSaleNFT
-        @param getFixedSaleNFTthis function to view nft getFixedSaleNFT details 
-     */
+
     function getFixedSaleNFT() external view returns (SaleInfo[] memory) {
         return fixedSaleNFT;
     }
-     /*
-        @notice its a view function to getNftAuctionSaleDetails
-        @param getNftAuctionSaleDetails function to view nft getNftAuctionSaleDetails details 
-     */
+
     function getNftAuctionSaleDetails(
         address _nftContractAddress,
         uint256 _tokenId
@@ -456,3 +410,4 @@ contract NFTMarketplace is INFTMarketplace, ANFTMarketplace {
 
     receive() external payable {}
 }
+
