@@ -342,7 +342,6 @@ contract NFTMarketplace1155 is INFTMarketplace1155, ANFTMarketplace1155 {
         external
         isNftInAuctionSale(_nftContractAddress, _tokenId)
         isAuctionResetByOwner(_nftContractAddress, _tokenId)
-        isAuctionOngoing(_nftContractAddress, _tokenId)
         isbidNotMakeTillNow(_nftContractAddress, _tokenId)
     {
         address nftContractAddress = _nftContractAddress;
