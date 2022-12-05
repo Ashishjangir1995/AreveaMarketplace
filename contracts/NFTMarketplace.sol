@@ -205,7 +205,6 @@ contract NFTMarketplace is INFTMarketplace, ANFTMarketplace {
         external
         isNftInAuctionSale(_nftContractAddress, _tokenId)
         isAuctionResetByOwner(_nftContractAddress, _tokenId)
-        isAuctionOngoing(_nftContractAddress, _tokenId)
         isbidNotMakeTillNow(_nftContractAddress, _tokenId)
     {
         nftSaleStatus[_nftContractAddress][_tokenId] = 0;
