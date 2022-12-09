@@ -197,22 +197,3 @@ From the Above Smart contract one is for Single NFT and another is for Multiple 
 
                                                                                                                                                                                            
 
-Sources and Address:<br>
-
-AreveaToken, SingleNFT &amp; Multiple NFT with Market and Bid functions 
-link to Arevea ERC20 REadme - https://github.com/Tapas15/ERC20/blob/main/README.md
-All link of AVAX network
-
-Arevea token https://testnet.snowtrace.io/token/0x2de1cC902c79Ee6CCb6138Fb315846A46BECB716
-
-Single nft https://testnet.snowtrace.io/address/0x87392f90122909B3201A9Dbf88251df1A4dA68E8
-
-Single mkt https://testnet.snowtrace.io/address/0xdBfDfA128662bBE5e2eb03E1Fd33E5C0Cc684011
-
-multi_nft https://testnet.snowtrace.io/address/0xAf4cE7aa8fe84aDA55a84A8631F8893EE7Fbf7E8
-
-multi_mkt https://testnet.snowtrace.io/address/0x4939E19CDfd09e61943E6cDf5FC7b0572aCbCbc0
-
-
-### Disclaimer 
-added
